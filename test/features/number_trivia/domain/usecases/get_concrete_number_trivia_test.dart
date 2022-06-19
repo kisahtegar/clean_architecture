@@ -9,12 +9,12 @@ class MockNumberTriviaRepository extends Mock
     implements NumberTriviaRepository {}
 
 void main() {
-  GetConcreteNumberTrivia? usecase;
-  MockNumberTriviaRepository? mockNumberTriviaRepository;
+  late GetConcreteNumberTrivia usecase;
+  late MockNumberTriviaRepository mockNumberTriviaRepository;
 
   setUp(() {
     mockNumberTriviaRepository = MockNumberTriviaRepository();
-    usecase = GetConcreteNumberTrivia(mockNumberTriviaRepository!);
+    usecase = GetConcreteNumberTrivia(mockNumberTriviaRepository);
   });
 
   const tNumber = 1;
@@ -26,14 +26,14 @@ void main() {
       // "On the fly" implementation of the Repository using the Mockito package.
       // When getConcreteNumberTrivia is called with any argument, always answer with
       // the Right "side" of Either containing a test NumberTrivia object.
-      when(mockNumberTriviaRepository?.getConcreteNumberTrivia(any!))
+      when(mockNumberTriviaRepository.getConcreteNumberTrivia(tNumber))
           .thenAnswer((_) async => const Right(tNumberTrivia));
 
-      final result = await usecase!.execute(number: tNumber);
+      final result = await usecase(const Params(number: tNumber));
       // UseCase should simply return whatever was returned from the Repository
       expect(result, const Right(tNumberTrivia));
       // Verify that the method has been called on the Repository
-      verify(mockNumberTriviaRepository?.getConcreteNumberTrivia(tNumber));
+      verify(mockNumberTriviaRepository.getConcreteNumberTrivia(tNumber));
       // Only the above method should be called and nothing more.
       verifyNoMoreInteractions(mockNumberTriviaRepository);
     },
