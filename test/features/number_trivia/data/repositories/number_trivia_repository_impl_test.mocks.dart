@@ -4,7 +4,7 @@
 
 import 'dart:async' as _i5;
 
-import 'package:clean_architecture/core/platform/network_info.dart' as _i3;
+import 'package:clean_architecture/core/network/network_info.dart' as _i3;
 import 'package:clean_architecture/features/number_trivia/data/datasources/number_trivia_remote_data_source.dart'
     as _i4;
 import 'package:clean_architecture/features/number_trivia/data/models/number_trivia_model.dart'
