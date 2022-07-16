@@ -62,7 +62,7 @@ void main() {
       //arrange
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
       //act
-      repository.getConcreteNumberTrivia(tNumber);
+      await repository.getConcreteNumberTrivia(tNumber);
       //assert
       verify(mockNetworkInfo.isConnected);
     });
