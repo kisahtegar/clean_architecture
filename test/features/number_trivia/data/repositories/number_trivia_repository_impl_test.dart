@@ -69,7 +69,7 @@ void main() {
     const tNumberTriviaModel =
         NumberTriviaModel(text: 'test trivia', number: tNumber);
     const NumberTrivia tNumberTrivia = tNumberTriviaModel;
-    test('should check if the device is online', () async {
+    test('should check if the device is online', () async* {
       //arrange
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
       //act
@@ -121,7 +121,7 @@ void main() {
     runTestsOffline(() {
       test(
           'should return last locally cached data when the cached data is present',
-          () async {
+          () async* {
         //arrange
         when(mockLocalDataSource.getLastNumberTrivia())
             .thenAnswer((_) async => tNumberTriviaModel);
@@ -134,7 +134,7 @@ void main() {
       });
 
       test('should return CacheFailure when there is no cached data present',
-          () async {
+          () async* {
         //arrange
         when(mockLocalDataSource.getLastNumberTrivia())
             .thenThrow(CacheException());
