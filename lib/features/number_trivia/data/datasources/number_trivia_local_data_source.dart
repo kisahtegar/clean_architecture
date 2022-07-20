@@ -1,12 +1,9 @@
 import 'dart:convert';
 
-import 'package:clean_architecture/core/error/execption.dart';
-import 'package:clean_architecture/features/number_trivia/data/models/number_trivia_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:meta/meta.dart ';
 
-import '../../domain/entities/number_trivia.dart';
+import '../../../../core/error/execption.dart';
+import '../models/number_trivia_model.dart';
 
 abstract class NumberTriviaLocalDataSource {
   /// Gets the cached [NumberTriviaModel] which was gotten the last time
